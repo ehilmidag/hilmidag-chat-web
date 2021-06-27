@@ -14,6 +14,10 @@ const sidebarTemplate = document.querySelector('#sidebar-template').innerHTML
 
 // Options
 const { username, room } = Qs.parse(location.search, { ignoreQueryPrefix: true })
+if(username ===null || username ===undefined ||room===null || room ===undefined){
+    location.replace('/');
+}
+
 
 const autoscroll = () => {
     // New message element
@@ -51,6 +55,7 @@ socket.on('message', (message) => {
 
 socket.on('locationMessage', (message) => {
     console.log(message)
+    
     const html = Mustache.render(locationMessageTemplate, {
         username: message.username,
         url: message.url,
