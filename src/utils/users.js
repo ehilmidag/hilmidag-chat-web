@@ -11,6 +11,11 @@ const addUser = ({ id, username, room }) => {
             error: 'Username and room are required!'
         }
     }
+    if(username ===null || username ===undefined ||room===null || room ===undefined){
+        return{
+            error:'Username and room must filled!'
+        }
+    }
 
     // Check for existing user
     const existingUser = users.find((user) => {
